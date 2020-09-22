@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_netflix_responsive_ui/models/models.dart';
+import 'package:flutter_netflix_responsive_ui/widgets/widgets.dart';
 
 class ContentHeader extends StatelessWidget {
   final Content featuredContent;
@@ -46,10 +47,44 @@ class ContentHeader extends StatelessWidget {
           bottom: 40.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [],
+            children: [
+              VerticalIconButton(
+                icon: Icons.add,
+                title: 'List',
+                onTap: () => print('My List'),
+              ),
+              _PlayButton(),
+              VerticalIconButton(
+                icon: Icons.info_outline,
+                title: 'Info',
+                onTap: () => print('Info'),
+              ),
+            ],
           ),
         )
       ],
+    );
+  }
+}
+
+class _PlayButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton.icon(
+      padding: const EdgeInsets.fromLTRB(15.0, 5.0, 20.0, 5.0),
+      onPressed: () => print('Play'),
+      color: Colors.white,
+      icon: const Icon(
+        Icons.play_arrow,
+        size: 30.0,
+      ),
+      label: const Text(
+        'Play',
+        style: const TextStyle(
+          fontSize: 16.0,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 }
